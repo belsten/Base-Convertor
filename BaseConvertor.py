@@ -30,20 +30,19 @@ def main():
             'E','F','G','H','I','J','K',  \
             'L','M','N','O','P','Q','R',  \
             'S','T','U','V','W','X','Y','Z']
-    
+
     while True:
-        string_num = input('\nEnter number => ').upper()
-        old_base   = input('Enter number base (36 max) => ')
-        new_base   = input('Enter base to convert to (36 max) => ')
+        string_num = (input('\nEnter number => ').upper()).strip()
+        old_base   = (input('Enter number base (36 max) => ')).strip()
+        new_base   = (input('Enter base to convert to (36 max) => ')).strip()
         try:
             old_base = int(old_base)
             new_base = int(new_base)
-            if old_base > 36 or new_base > 36:
+            if old_base > 36 or old_base < 2 or new_base > 36 or new_base < 2:
                 raise ValueError("Not valid input")
         except ValueError:
             print_error()
             continue
-        
         valid = True
         for i in reversed(string_num):
             if base.index(i) > old_base:
